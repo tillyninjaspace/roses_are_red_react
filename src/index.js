@@ -1,5 +1,8 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
+import './index.css'
+import Postform from './components/Form'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
@@ -23,7 +26,6 @@ const App = () => {
         fetchPosts()
         .then(data => {
             setPosts(data.posts)
-            console.log("what's the post", data)
         })
         .catch(error => {
             console.error(error)
@@ -31,18 +33,26 @@ const App = () => {
     },[])
     
     return (
-           <div style={{"border": "1px solid black", "textAlign": "center", borderRadius: "5px"}}>
-               <h1>Roses are <span style={{color: "red"}}>Red</span>, Violets are <span style={{color: "blue"}}>Blue</span></h1>
-               <h2>Used items for free or sale</h2>
-             {
+           <div style={{"border": "1px solid black", borderRadius: "5px", padding: "10px", margin: "10px",textAlign: "center"}}>
+               <p><a href="http://sanluisobispomom.com" target="_blank"> <img src="/sanluisobispomom_logo.png"/></a></p>
+               <h1>Bulletin Board</h1>
+               <h2>Used items for free</h2>
+               <div className="itemList">
+            {
                  posts && posts.map((post) => 
-                    <div key={post.id} style={{display: "flex", flexDirection: "column",
-                    border: "1px solid gray", minHeight: "200px", alignItems: "center"}}>
-                        <h3>Item Name: {post.name}</h3>
+                    <div key={post.id} style={{display: "flex", flexDirection: "column", justifyContent: "space-between",
+                    border: "1px solid gray", minHeight: "200px", width: "350px", alignItems: "center", padding: "15px", marginBottom: "5px"}}>
+                        <h3 style={{textTransform: "capitalize"}}>{post.name}</h3>
+                        <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>
+                        { post.location? <p>Pick Up Location: {post.location}</p> : '' }
+                        { post.contact? <p>Contact By: {post.contact}</p> : '' }
+                        <img src={post.picture}/>
                     </div>
                 )
             }
+                </div>
+            <Postform posts={posts} setPosts={setPosts}/>
             </div>
     )
 };
