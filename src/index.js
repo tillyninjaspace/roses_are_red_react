@@ -9,6 +9,7 @@ const App = () => {
     const [posts, setPosts] = useState([])
     // const URL = 'https://roses-are-red.herokuapp.com/api/posts'
     const URL = 'http://localhost:4000/api/posts'
+//FOR DEPLOYMENT, change URL to line 10 and comment out line 11 and also swap line 54 for line 55
 
     async function fetchPosts() {
         try {
@@ -31,6 +32,8 @@ const App = () => {
             console.error(error)
         })
     },[])
+
+    console.log("What are the posts", posts)
     
     return (
            <div style={{"border": "1px solid black", borderRadius: "5px", padding: "10px", margin: "10px",textAlign: "center"}}>
@@ -46,8 +49,11 @@ const App = () => {
                         <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
-                        { post.contact? <p>Contact By: {post.contact}</p> : '' }
-                        <img src={post.picture}/>
+                        { post.contact? <p>Contact By: {post.contact}</p> : ''}
+                        {/* { post.picture? <img src={post.picture}/> : <img src='/sanluisobispomom_logo.png'/> } */}
+                        { post.productimage? <img src={`http://localhost:4000/${post.productimage}`}/> : '' }
+                        {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
+
                     </div>
                 )
             }

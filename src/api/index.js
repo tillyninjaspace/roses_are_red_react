@@ -1,11 +1,13 @@
 const BASE_API = 'http://localhost:4000'
+// const BASE_API = 'https://roses-are-red.herokuapp.com'
 
-export async function newPost(name, description, location, contact, picture) {
+export async function newPost(name, description, location, contact, picture, productimage) {
     try {
         const response = await fetch(`${BASE_API}/api/post`, {
             method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify({name, description, location, contact, picture})
+            // headers: {"Content-Type": "application/json"},
+            // headers: {"Content-Type": "multipart/form-data"},
+            body: JSON.stringify({name, description, location, contact, picture, productimage})
         })
         const post = await response.json()
         console.log("What's React API data for new Post", post)

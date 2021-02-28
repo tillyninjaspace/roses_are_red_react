@@ -1,8 +1,9 @@
+import axios from 'axios';
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import {newPost} from '../api'
-import Upload from './Upload'
+
 
 const Postform = ({posts, setPosts}) => {
     const [name, setName] = useState('')
@@ -17,18 +18,36 @@ const Postform = ({posts, setPosts}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        console.log("HELO HELLO")
         try {
-        const post = await newPost(name, description, location, contact, picture)
-        console.log("What is post response?", post, fileUpload)
+        // const post = await newPost(name, description, location, contact, picture)
+
+        //new
+        let formData = new FormData();
+          formData.append('name', name)
+          formData.append('description', description)
+          formData.append('location', location)
+          formData.append('contact', contact)
+          formData.append('picture', picture)
+          formData.append('productimage', selectedFile)
+          // const post = await newPost(name, description, location, contact, picture, productimage)
+          // const post = await newPost(formData)
+          axios.post("http://localhost:4000/api/post", formData, {
+          }).then(res => {
+            console.log("RES post", res)
+            const newPostsList = [...posts, res.data]
+            setPosts(newPostsList)
+          })
+        //end of new
+
+        console.log("MAGIC!")
+        // console.log("What is RES?", res, fileUpload)
         setName('')
         setDescription('')
         setLocation('')
         setContact('')
-
-        if (post) {
-            const newPostsList = [...posts, post]
-            setPosts(newPostsList)
-        }
+        setSelectedFile()
+        setTest('')
 
         } catch(error) {
             console.error(error)
@@ -44,41 +63,15 @@ const Postform = ({posts, setPosts}) => {
       setFileUpload(true);
     }
 
-    // const handleSubmission = () => {
-    //   const formData = new FormData();
-      
-    // }
+console.log("SELECTED FILE IS", selectedFile)
 
-    const handleSubmission = () => {
-      const formData = new FormData();
-  
-      formData.append('File', selectedFile);
-  
-      fetch(
-        // `https://freeimage.host/api/1/upload?key=${API_KEY}`,
-        `https://freeimage.host/api/1/upload?key=${API_KEY}`,
-        {
-          method: 'POST',
-          body: formData,
-        }
-      )
-        .then((response) => response.json())
-        .then((result) => {
-          console.log('Success:', result);
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    };
-
-
-
-    console.log("What is contact", contact, "What's description", description, 
-    "what is picture string", picture, "What's the selected file", selectedFile, "FILE NAME: ", fileUpload)
+    console.log("NAME", name, "DESCRIPTION", description, "Contact", contact,
+    "PICTURE", picture, "SELECTEDFILE", selectedFile, "FILE NAME: ", fileUpload)
 
     return (
    
-  <Form onSubmit={handleSubmit} style={{margin: "7px"}}>
+  <Form onSubmit={handleSubmit} style={{margin: "7px"}}
+  >
     <h2>Post an item</h2>
   <Form.Group>
     <Form.Label>Item Name</Form.Label>
@@ -107,19 +100,21 @@ const Postform = ({posts, setPosts}) => {
     />
   </Form.Group>
 
-  <Upload/>
+  {/* This is the picture string below */}
   {/* <Form.Group>
     <Form.Label>Picture URL</Form.Label>
     <Form.Control type="text" placeholder="Picture URL"
-    onChange={(event) => setPicture(event.target.value)}
+    onChange={(event) => setPic
+      ture(event.target.value)}
     />
   </Form.Group>
      */}
+  {/* End of picture string input */}
 
 
   <Form.Group>
   <img src={test}/>
-  <Form.File id="exampleFormControlFile1" label="Example file input" 
+  <Form.File id="exampleFormControlFile1" label="File Image Input" 
     onChange={changeHandler}
     />
     {/* <Button variant="secondary" type="submit">Upload picture</Button> */}
