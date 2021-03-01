@@ -2,14 +2,16 @@ import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 import Postform from './components/Form'
+import Login from './components/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
 
     const [posts, setPosts] = useState([])
-    // const URL = 'https://roses-are-red.herokuapp.com/api/posts'
-    const URL = 'http://localhost:4000/api/posts'
-//FOR DEPLOYMENT, change URL to line 10 and comment out line 11 and also swap line 54 for line 55
+//FOR DEVELOPMENT
+    const URL = 'https://roses-are-red.herokuapp.com/api/posts'
+    // const URL = 'http://localhost:4000/api/posts'
+//FOR DEPLOYMENT, change URL to line 12 and comment out line 13 and also swap line 54 for line 55
 
     async function fetchPosts() {
         try {
@@ -40,6 +42,7 @@ const App = () => {
                <p><a href="http://sanluisobispomom.com" target="_blank"> <img src="/sanluisobispomom_logo.png"/></a></p>
                <h1>Bulletin Board</h1>
                <h2>Used items for free</h2>
+               {/* <Login /> */}
                <div className="itemList">
             {
                  posts && posts.map((post) => 
@@ -51,8 +54,8 @@ const App = () => {
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
                         { post.contact? <p>Contact By: {post.contact}</p> : ''}
                         {/* { post.picture? <img src={post.picture}/> : <img src='/sanluisobispomom_logo.png'/> } */}
-                        { post.productimage? <img src={`http://localhost:4000/${post.productimage}`}/> : '' }
-                        {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
+                        {/* { post.productimage? <img src={`http://localhost:4000/${post.productimage}`}/> : '' } */}
+                        { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' }
 
                     </div>
                 )

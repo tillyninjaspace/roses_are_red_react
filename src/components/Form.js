@@ -30,9 +30,9 @@ const Postform = ({posts, setPosts}) => {
           formData.append('contact', contact)
           formData.append('picture', picture)
           formData.append('productimage', selectedFile)
-          // const post = await newPost(name, description, location, contact, picture, productimage)
-          // const post = await newPost(formData)
-          axios.post("http://localhost:4000/api/post", formData, {
+
+          axios.post("https://roses-are-red.herokuapp.com/api/post", formData, {
+          // axios.post("http://localhost:4000/api/post", formData, {
           }).then(res => {
             console.log("RES post", res)
             const newPostsList = [...posts, res.data]
@@ -41,7 +41,7 @@ const Postform = ({posts, setPosts}) => {
         //end of new
 
         console.log("MAGIC!")
-        // console.log("What is RES?", res, fileUpload)
+
         setName('')
         setDescription('')
         setLocation('')
@@ -114,7 +114,7 @@ console.log("SELECTED FILE IS", selectedFile)
 
   <Form.Group>
   <img src={test}/>
-  <Form.File id="exampleFormControlFile1" label="File Image Input" 
+  <Form.File id="exampleFormControlFile1" label="Upload an image" 
     onChange={changeHandler}
     />
     {/* <Button variant="secondary" type="submit">Upload picture</Button> */}
