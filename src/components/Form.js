@@ -31,13 +31,16 @@ const Postform = ({posts, setPosts}) => {
           formData.append('picture', picture)
           formData.append('productimage', selectedFile)
 
-          axios.post("https://roses-are-red.herokuapp.com/api/post", formData, {
-          // axios.post("http://localhost:4000/api/post", formData, {
+          // axios.post("https://roses-are-red.herokuapp.com/api/post", formData, {
+          axios.post("http://localhost:4000/api/post", formData, {
           }).then(res => {
-            console.log("RES post", res)
+            console.log("RES post", res.data)
             const newPostsList = [...posts, res.data]
             setPosts(newPostsList)
+          }).catch(error => {
+            throw error
           })
+
         //end of new
 
         console.log("MAGIC!")
@@ -114,7 +117,7 @@ console.log("SELECTED FILE IS", selectedFile)
 
   <Form.Group>
   <img src={test}/>
-  <Form.File id="exampleFormControlFile1" label="Upload an image" 
+  <Form.File id="exampleFormControlFile1" label="Upload an image" required
     onChange={changeHandler}
     />
     {/* <Button variant="secondary" type="submit">Upload picture</Button> */}
