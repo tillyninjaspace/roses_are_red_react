@@ -1,3 +1,5 @@
+//NOTE TO SELF: Currently not using this right now but saving it
+
 const BASE_API = 'http://localhost:4000'
 // const BASE_API = 'https://roses-are-red.herokuapp.com'
 

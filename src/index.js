@@ -66,7 +66,7 @@ const App = () => {
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
                         { post.contact? <p>Contact By: {post.contact}</p> : ''}
                         {/* { post.picture? <img src={post.picture}/> : <img src='/sanluisobispomom_logo.png'/> } */}
-                        { post.productimage? <img src={`http://localhost:4000/${post.productimage}`}/> : '' }
+                        { post.productimage? <img src={post.productimage}/> : '' }
                         {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
 
                     </div>
