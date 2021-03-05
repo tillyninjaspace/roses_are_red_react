@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import {newPost} from '../api'
+// import {newPost} from '../api'
 
 
 const Postform = ({posts, setPosts}) => {
@@ -52,6 +52,8 @@ const Postform = ({posts, setPosts}) => {
         setContact('')
         setSelectedFile()
         setTest('')
+
+        console.log("END OF FUNCTION")
 
         } catch(error) {
             console.error(error)
