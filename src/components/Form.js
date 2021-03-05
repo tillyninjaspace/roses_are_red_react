@@ -18,7 +18,7 @@ const Postform = ({posts, setPosts}) => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        console.log("HELO HELLO")
+        console.log("HELLO HELLO, ABOUT TO POST")
         try {
         // const post = await newPost(name, description, location, contact, picture)
 
@@ -32,7 +32,8 @@ const Postform = ({posts, setPosts}) => {
           formData.append('productimage', selectedFile)
 
           // axios.post("https://roses-are-red.herokuapp.com/api/post", formData, {
-          axios.post("http://localhost:4000/api/post", formData, {
+          // axios.post("http://localhost:4000/api/post", formData, {
+            axios.post("http://localhost:4000/user/post", formData, {
           }).then(res => {
             console.log("RES post", res.data)
             const newPostsList = [...posts, res.data]
@@ -43,7 +44,7 @@ const Postform = ({posts, setPosts}) => {
 
         //end of new
 
-        console.log("MAGIC!")
+        console.log("POST IS MAGIC!")
 
         setName('')
         setDescription('')
