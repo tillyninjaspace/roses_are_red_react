@@ -31,9 +31,9 @@ const Postform = ({posts, setPosts}) => {
           formData.append('picture', picture)
           formData.append('productimage', selectedFile)
 
-          // axios.post("https://roses-are-red.herokuapp.com/api/post", formData, {
+          axios.post("https://roses-are-red.herokuapp.com/user/post", formData, {
           // axios.post("http://localhost:4000/api/post", formData, {
-            axios.post("http://localhost:4000/user/post", formData, {
+            // axios.post("http://localhost:4000/user/post", formData, {
           }).then(res => {
             console.log("RES post", res.data)
             const newPostsList = [...posts, res.data]
