@@ -17,3 +17,16 @@ img {
     bottom:0; 
     backdrop-filter: blur(3px);
 }
+
+.loadingImage {
+    background-color: white;
+    border: 2px solid gray;
+    padding: 40px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.loadingText {
+    position: relative;
+    bottom: 40px;
+}

@@ -34,7 +34,8 @@ const Login = (props) => {
       <Form style={{border: "2px solid gray", borderRadius: "5px", padding: "10px", margin: "10px"}}
       onSubmit={handleSubmission}>
       <Form.Group controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
+      <Form.Label>THIS LOGIN FORM IS STILL UNDER CONSTRUCTION</Form.Label>
+        {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control type="email" placeholder="Enter email" value={username}
         onChange={(event) => setUsername(event.target.value)} />
         <Form.Text className="text-muted">

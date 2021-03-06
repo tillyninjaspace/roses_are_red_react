@@ -6,9 +6,9 @@ const Loading = () => {
     return (
         <div className="loading">
             
-            <img src="loading_slo.gif"/>
+            <img className="loadingImage" src="loading_slo.gif"/>
             <p>
-            <span style={{background: "grey", color: "white", padding: "8px", borderRadius: "5px"}}>Loading Posts ...</span>
+            <span className="loadingText" style={{background: "grey", color: "white", padding: "8px", borderRadius: "5px"}}>Loading Posts...</span>
             </p>
 
         </div>

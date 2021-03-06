@@ -15,6 +15,7 @@ const Postform = ({posts, setPosts}) => {
     const [selectedFile, setSelectedFile] = useState();
     const [fileUpload, setFileUpload] = useState(false);
     const [test, setTest] = useState('')
+    // const [exampleFormControlFile1, setExampleFormControlFile1] = useState('No File')
 
     const handleSubmit = async (event) => {
         event.preventDefault()
