@@ -4,6 +4,7 @@ import './index.css'
 import Postform from './components/Form'
 import Login from './components/Login'
 import Loading from './components/Loading'
+import Footer from './components/Footer'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -54,7 +55,7 @@ const App = () => {
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
      
 
-               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
+               {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> */}
                <div className="itemList">
             {
                  posts && posts.map((post) => 
@@ -74,6 +75,7 @@ const App = () => {
             }
                 </div>
             <Postform posts={posts} setPosts={setPosts}/>
+            <Footer />
             </div>
     )
 };
