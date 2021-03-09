@@ -60,7 +60,8 @@ const App = () => {
             {
                  posts && posts.map((post) => 
                     <div key={post.id} style={{display: "flex", flexDirection: "column", justifyContent: "space-between",
-                    border: "1px solid gray", minHeight: "200px", width: "350px", alignItems: "center", padding: "15px", marginBottom: "5px"}}>
+                    border: "1px solid gray", minHeight: "200px", width: "350px", alignItems: "center", padding: "23px", marginBottom: "5px"
+                    }} className="postCard">
                         <h3 style={{textTransform: "capitalize"}}>{post.name}</h3>
                         <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>

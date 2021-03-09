@@ -15,6 +15,7 @@ const Postform = ({posts, setPosts}) => {
     const [selectedFile, setSelectedFile] = useState();
     const [fileUpload, setFileUpload] = useState(false);
     const [test, setTest] = useState('')
+    const fileImageUpload = React.useRef();
     // const [exampleFormControlFile1, setExampleFormControlFile1] = useState('No File')
 
     const handleSubmit = async (event) => {
@@ -53,6 +54,7 @@ const Postform = ({posts, setPosts}) => {
         setContact('')
         setSelectedFile()
         setTest('')
+        fileImageUpload.current.value = '';
 
         console.log("END OF FUNCTION")
 
@@ -122,6 +124,7 @@ console.log("SELECTED FILE IS", selectedFile)
   <Form.Group>
   <img src={test}/>
   <Form.File id="exampleFormControlFile1" label="Upload an image" required
+    ref={fileImageUpload}
     onChange={changeHandler}
     />
     {/* <Button variant="secondary" type="submit">Upload picture</Button> */}
