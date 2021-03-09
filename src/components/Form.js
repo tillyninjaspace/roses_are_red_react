@@ -3,6 +3,7 @@ import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 // import {newPost} from '../api'
+import Loading from './Loading';
 
 
 const Postform = ({posts, setPosts}) => {
@@ -14,13 +15,15 @@ const Postform = ({posts, setPosts}) => {
 
     const [selectedFile, setSelectedFile] = useState();
     const [fileUpload, setFileUpload] = useState(false);
-    const [test, setTest] = useState('')
+    const [imagePreview, setImagePreview] = useState('')
     const fileImageUpload = React.useRef();
     // const [exampleFormControlFile1, setExampleFormControlFile1] = useState('No File')
 
     const handleSubmit = async (event) => {
         event.preventDefault()
+        setFileUpload(true);
         console.log("HELLO HELLO, ABOUT TO POST")
+        
         try {
         // const post = await newPost(name, description, location, contact, picture)
 
@@ -38,6 +41,7 @@ const Postform = ({posts, setPosts}) => {
             // axios.post("http://localhost:4000/user/post", formData, {
           }).then(res => {
             console.log("RES post", res.data)
+            setFileUpload(false)
             const newPostsList = [...posts, res.data]
             setPosts(newPostsList)
           }).catch(error => {
@@ -53,7 +57,7 @@ const Postform = ({posts, setPosts}) => {
         setLocation('')
         setContact('')
         setSelectedFile()
-        setTest('')
+        setImagePreview('')
         fileImageUpload.current.value = '';
 
         console.log("END OF FUNCTION")
@@ -66,13 +70,9 @@ const Postform = ({posts, setPosts}) => {
     const changeHandler = (event) => {
       setSelectedFile(event.target.files[0]);
       console.log("What is the file", selectedFile)
-      setTest(URL.createObjectURL(event.target.files[0]))
+      setImagePreview(URL.createObjectURL(event.target.files[0]))
       setPicture(URL.createObjectURL(event.target.files[0]))
-      console.log("What's the TEST", test)
-      setFileUpload(true);
     }
-
-console.log("SELECTED FILE IS", selectedFile)
 
     console.log("NAME", name, "DESCRIPTION", description, "Contact", contact,
     "PICTURE", picture, "SELECTEDFILE", selectedFile, "FILE NAME: ", fileUpload)
@@ -119,10 +119,10 @@ console.log("SELECTED FILE IS", selectedFile)
   </Form.Group>
      */}
   {/* End of picture string input */}
-
+     { fileUpload? <Loading/> : ''}
 
   <Form.Group>
-  <img src={test}/>
+  <img src={imagePreview}/>
   <Form.File id="exampleFormControlFile1" label="Upload an image" required
     ref={fileImageUpload}
     onChange={changeHandler}

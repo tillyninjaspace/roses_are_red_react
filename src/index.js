@@ -49,7 +49,7 @@ const App = () => {
            <div style={{"border": "1px solid black", borderRadius: "5px", padding: "10px", margin: "10px",textAlign: "center"}}>
               
                <h1>Bulletin Board</h1>
-               <h2>Used items for free</h2>
+               <h2>Used Items for Free &amp; Featured Listings</h2>
 
         {/* Loading feature */} 
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
