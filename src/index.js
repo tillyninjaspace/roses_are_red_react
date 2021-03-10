@@ -5,6 +5,7 @@ import Postform from './components/Form'
 import Login from './components/Login'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
+import Contact from './components/Contact'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -76,6 +77,7 @@ const App = () => {
             }
                 </div>
             <Postform posts={posts} setPosts={setPosts}/>
+            <Contact />
             <Footer />
             </div>
     )
