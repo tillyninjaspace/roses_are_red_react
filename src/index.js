@@ -13,6 +13,7 @@ const App = () => {
     const [posts, setPosts] = useState([])
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
+    const [token, setToken] = useState('')
 //FOR DEVELOPMENT
     const URL = 'https://roses-are-red.herokuapp.com/api/posts'
     // const URL = 'http://localhost:4000/api/posts'
@@ -45,6 +46,7 @@ const App = () => {
     },[])
 
     console.log("What are the posts", posts)
+    console.log("GLOBAL token", token)
     
     return (
            <div style={{"border": "1px solid black", borderRadius: "5px", padding: "10px", margin: "10px",textAlign: "center"}}>
@@ -56,7 +58,7 @@ const App = () => {
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
      
 
-               {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> */}
+               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>
                <div className="itemList">
             {
                  posts && posts.map((post) => 

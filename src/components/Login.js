@@ -2,14 +2,15 @@ import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
+import {logIn} from '../api';
 
 const Login = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const {isLoggedIn, setIsLoggedIn} = props
+  const {isLoggedIn, setIsLoggedIn, token, setToken} = props
    
 
-    const handleSubmission = (event) => {
+    const handleSubmission = async (event) => {
       event.preventDefault()
       console.log(`What's username and password`, username, password)
     // fetch(
@@ -26,15 +27,28 @@ const Login = (props) => {
     //     .catch((error) => {
     //       console.error('Error:', error);
     //     });
+      try {
+        const user = await logIn(username, password)
+        console.log(user, "TOKEN", user.token)
+        if (user.token) {
+        setToken(user.token)
+        setIsLoggedIn(true)
+        setUsername('')
+        setPassword('')
+        }
+      } catch (error) {
+        console.error(error)
+      }
     };
 
-    // console.log("What's upload", upload)
+
 
     return (
       <Form style={{border: "2px solid gray", borderRadius: "5px", padding: "10px", margin: "10px"}}
       onSubmit={handleSubmission}>
+        <Form.Label>{isLoggedIn? `You're logged in.` : ``}</Form.Label>
       <Form.Group controlId="formBasicEmail">
-      <Form.Label>THIS LOGIN FORM IS STILL UNDER CONSTRUCTION</Form.Label>
+      <Form.Label>Username</Form.Label>
         {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control type="email" placeholder="Enter email" value={username}
         onChange={(event) => setUsername(event.target.value)} />
