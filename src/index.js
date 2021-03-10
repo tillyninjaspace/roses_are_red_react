@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
 import Postform from './components/Form'
-import Login from './components/Login'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
@@ -53,12 +52,13 @@ const App = () => {
               
                <h1>Bulletin Board</h1>
                <h2>Used Items for Free &amp; Featured Listings</h2>
-
         {/* Loading feature */} 
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
      
-
-               <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>
+            {/* <Switch> */}
+               {/* <Route path='/login'> */}
+               {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>  */}
+                   {/* </Route> */}
                <div className="itemList">
             {
                  posts && posts.map((post) => 
@@ -78,15 +78,19 @@ const App = () => {
                 )
             }
                 </div>
-            <Postform posts={posts} setPosts={setPosts}/>
-            <Contact />
+            { token ? <Postform token={token} posts={posts} setPosts={setPosts}/> : '' }
+            {/* <Postform posts={posts} setPosts={setPosts}/>  */}
+            { !isLoading ? <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  : ''}
+            {/* </Switch> */}
             <Footer />
+
             </div>
     )
 };
 
 
 ReactDOM.render(
+ 
     <App/>,
     document.getElementById('root')
 )

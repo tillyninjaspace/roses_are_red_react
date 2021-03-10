@@ -7,53 +7,44 @@ import {logIn} from '../api';
 const Login = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
   const {isLoggedIn, setIsLoggedIn, token, setToken} = props
    
 
     const handleSubmission = async (event) => {
       event.preventDefault()
       console.log(`What's username and password`, username, password)
-    // fetch(
-    //     `http://localhost:4000/upload`,
-    //     {
-    //       method: 'POST',
-    //       body: JSON.stringify({upload}),
-    //     }
-    //   )
-    //     .then((response) => response.json())
-    //     .then((result) => {
-    //       console.log('Success:', result);
-    //     })
-    //     .catch((error) => {
-    //       console.error('Error:', error);
-    //     });
       try {
         const user = await logIn(username, password)
-        console.log(user, "TOKEN", user.token)
+        console.log(user, "TOKEN", user.token, "USER MESSAGE", user.message)
         if (user.token) {
+        setErrorMessage(user.message)
         setToken(user.token)
-        setIsLoggedIn(true)
         setUsername('')
         setPassword('')
+        } else {
+          setErrorMessage(user.message)
         }
       } catch (error) {
         console.error(error)
       }
     };
 
+    console.log("WHAT's the error MESSAGE", errorMessage)
 
 
-    return (
+    return (    
       <Form style={{border: "2px solid gray", borderRadius: "5px", padding: "10px", margin: "10px"}}
       onSubmit={handleSubmission}>
-        <Form.Label>{isLoggedIn? `You're logged in.` : ``}</Form.Label>
+      <Form.Label>{errorMessage ? `${errorMessage}` : '' }</Form.Label>
+       
       <Form.Group controlId="formBasicEmail">
       <Form.Label>Username</Form.Label>
         {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control type="email" placeholder="Enter email" value={username}
         onChange={(event) => setUsername(event.target.value)} />
         <Form.Text className="text-muted">
-          We'll never share your email with anyone else.
+          Admin only
         </Form.Text>
       </Form.Group>
     
@@ -63,11 +54,6 @@ const Login = (props) => {
         onChange={(event) => setPassword(event.target.value)}
          />
       </Form.Group>
-      {/* <Form.Group controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" 
-        />
-      </Form.Group> */}
-      
       <Button variant="primary" type="submit">
         Submit
       </Button>

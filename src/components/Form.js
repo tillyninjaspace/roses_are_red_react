@@ -109,25 +109,13 @@ const Postform = ({posts, setPosts}) => {
     />
   </Form.Group>
 
-  {/* This is the picture string below */}
-  {/* <Form.Group>
-    <Form.Label>Picture URL</Form.Label>
-    <Form.Control type="text" placeholder="Picture URL"
-    onChange={(event) => setPic
-      ture(event.target.value)}
-    />
-  </Form.Group>
-     */}
-  {/* End of picture string input */}
      { fileUpload? <Loading/> : ''}
-
   <Form.Group>
   <img src={imagePreview}/>
   <Form.File id="exampleFormControlFile1" label="Upload an image" required
     ref={fileImageUpload}
     onChange={changeHandler}
     />
-    {/* <Button variant="secondary" type="submit">Upload picture</Button> */}
   </Form.Group> 
 
 
