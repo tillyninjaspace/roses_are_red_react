@@ -5,6 +5,7 @@ import Postform from './components/Form'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
+import Slide from './components/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
@@ -48,17 +49,20 @@ const App = () => {
     console.log("GLOBAL token", token)
     
     return (
-           <div style={{"border": "1px solid black", borderRadius: "5px", padding: "10px", margin: "10px",textAlign: "center"}}>
-              
-               <h1>Bulletin Board</h1>
-               <h2>Used Items for Free &amp; Featured Listings</h2>
-        {/* Loading feature */} 
+        <div style={{textAlign: "center"}}>
+        <p style={{backgroundColor: "darkgray", paddingTop: "5px", paddingBottom: "5px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> <span style={{position: "fixed",
+        right: "10px", top: "0px"}}>
+            <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} class="material-icons">
+facebook
+</span></a></span></p>
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
-     
+        <h1>Bulletin Board</h1>
+        <h2>Used Items for Free &amp; Featured Listings</h2>
             {/* <Switch> */}
                {/* <Route path='/login'> */}
                {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>  */}
                    {/* </Route> */}
+        { !isLoading ? <Slide/> : ''}
                <div className="itemList">
             {
                  posts && posts.map((post) => 

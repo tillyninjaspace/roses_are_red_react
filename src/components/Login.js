@@ -1,14 +1,13 @@
 import React, {useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
-import axios from 'axios';
 import {logIn} from '../api';
 
 const Login = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errorMessage, setErrorMessage] = useState('')
-  const {isLoggedIn, setIsLoggedIn, token, setToken} = props
+  const {setToken} = props
    
 
     const handleSubmission = async (event) => {
@@ -34,13 +33,12 @@ const Login = (props) => {
 
 
     return (    
-      <Form style={{border: "2px solid gray", borderRadius: "5px", padding: "10px", margin: "10px"}}
+      <Form style={{border: "2px double lightgray", borderRadius: "5px", padding: "10px", margin: "10px"}}
       onSubmit={handleSubmission}>
       <Form.Label>{errorMessage ? `${errorMessage}` : '' }</Form.Label>
        
       <Form.Group controlId="formBasicEmail">
       <Form.Label>Username</Form.Label>
-        {/* <Form.Label>Email address</Form.Label> */}
         <Form.Control type="email" placeholder="Enter email" value={username}
         onChange={(event) => setUsername(event.target.value)} />
         <Form.Text className="text-muted">
@@ -54,7 +52,7 @@ const Login = (props) => {
         onChange={(event) => setPassword(event.target.value)}
          />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="secondary" type="submit">
         Submit
       </Button>
     </Form>
