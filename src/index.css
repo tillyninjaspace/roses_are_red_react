@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=RocknRoll+One&display=swap');
 img {
     max-width: 300px;
 }
@@ -35,6 +36,7 @@ img {
 
 h1, h2, h3{
     font-family: Arial, Helvetica, sans-serif;
+    font-family: 'RocknRoll One', sans-serif;
 }
 
 h2 {
@@ -49,4 +51,13 @@ h2 {
 .postCard {
     background-color: black;
     color: white;
+}
+
+p, button {
+    font-family: 'Nunito', sans-serif;
+}
+
+button:hover {
+    color: red;
+    background-color: white;
 }
