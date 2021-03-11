@@ -5,8 +5,8 @@ const Slide = () => {
     return (
         <div>
 
-<Carousel fade style={{ backgroundColor: "black", padding:"5px", margin: "5px", borderRadius: "5px", display: "flex",
-justifyContent: "space-between"}}>
+<Carousel fade style={{ backgroundColor: "black", padding:"5px", marginLeft: "5px", marginRight: "5px", borderRadius: "5px", display: "flex",
+justifyContent: "space-between", marginTop: "20px"}}>
   <Carousel.Item>
     <img 
       className="d-block w-100"

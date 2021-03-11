@@ -8,7 +8,7 @@ Current Development Status on React App: https://dazzling-clarke-6e7127.netlify.
 
 ## Expected Completion Date: April 2021
 
-Tech Stack: React, Bootstrap, Multer, Cloudinary, Jsonwebtoken Node, Express, PostgreSQL HTML, CSS, Photoshop
+Tech Stack: React, Bootstrap, Multer, Cloudinary, Jsonwebtoken, Node, Express, PostgreSQL HTML, CSS, Photoshop
 
 ## Developer: Tilly Wright
 To see my completed work, see my Portfolio: https://gracious-mcnulty-e733ac.netlify.app/portfolio.html

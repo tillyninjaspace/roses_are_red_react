@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
-import Postform from './components/Form'
+// import Postform from './components/Form'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
 import Slide from './components/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { deletePost } from './api';
 
 const App = () => {
 
@@ -15,8 +16,8 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState('')
 //FOR DEVELOPMENT
-    const URL = 'https://roses-are-red.herokuapp.com/api/posts'
-    // const URL = 'http://localhost:4000/api/posts'
+    // const URL = 'https://roses-are-red.herokuapp.com/api/posts'
+    const URL = 'http://localhost:4000/api/posts'
 //FOR DEPLOYMENT, change URL to line 12 and comment out line 13 and also swap line 54 for line 55
 
     async function fetchPosts() {
@@ -52,10 +53,10 @@ const App = () => {
         <div style={{textAlign: "center"}}>
         <p style={{backgroundColor: "darkgray", paddingTop: "5px", paddingBottom: "5px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> <span style={{position: "fixed",
         right: "10px", top: "0px"}}>
-            <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} class="material-icons">
+            <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
 facebook
 </span></a></span></p>
-        { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
+        { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
         <h1>Bulletin Board</h1>
         <h2>Used Items for Free &amp; Featured Listings</h2>
             {/* <Switch> */}
@@ -74,17 +75,34 @@ facebook
                         <p>Item Description: {post.description}</p>
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
                         { post.contact? <p>Contact By: {post.contact}</p> : ''}
-                        {/* { post.picture? <img src={post.picture}/> : <img src='/sanluisobispomom_logo.png'/> } */}
                         { post.productimage? <img src={post.productimage}/> : '' }
+
+                       { token?  <button onClick={ async (event)=> { 
+                            const newList = [...posts]
+                            const index = newList.findIndex(postItem => postItem.id === post.id)
+                            if (index === -1) return;
+                            newList.splice(index,1)
+                            setPosts(newList)
+                            try {
+                                await deletePost(post.id)
+                                console.log("Delete Worked")
+                            } catch(error) {
+                                console.log(error)
+                            }
+                        }}
+
+                         style={{marginTop: "15px", backgroundColor: "red", color: "white"}}>Delete</button>  : ''}
+
                         {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
 
                     </div>
                 )
             }
                 </div>
-            { token ? <Postform token={token} posts={posts} setPosts={setPosts}/> : '' }
+            {/* { token ? <Postform token={token} posts={posts} setPosts={setPosts}/> : '' } */}
             {/* <Postform posts={posts} setPosts={setPosts}/>  */}
             { !isLoading ? <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  : ''}
+            {/* <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  */}
             {/* </Switch> */}
             <Footer />
 

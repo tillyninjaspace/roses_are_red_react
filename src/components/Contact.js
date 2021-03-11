@@ -12,7 +12,7 @@ const Contact = (props) => {
     console.log("TOKEN CONTACT", token)
 
     return (
-        <Accordion style={{marginTop: "30px"}} defaultActiveKey="0">
+        <Accordion defaultActiveKey="0">
         <Card>
         <Card.Header>
         <Accordion.Toggle as={Button} variant="link" eventKey="0">
