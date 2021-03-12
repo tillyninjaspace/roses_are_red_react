@@ -58,7 +58,7 @@ facebook
 </span></a></span></p>
         { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
         <h1>Bulletin Board</h1>
-        <h2>Used Items for Free &amp; Featured Listings</h2>
+        <h2>Free Things &amp; Featured Listings</h2>
             {/* <Switch> */}
                {/* <Route path='/login'> */}
                {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>  */}
@@ -67,15 +67,17 @@ facebook
                <div className="itemList">
             {
                  posts && posts.map((post) => 
+                    <>
                     <div key={post.id} style={{display: "flex", flexDirection: "column", justifyContent: "space-between",
-                    border: "1px solid gray", minHeight: "200px", width: "350px", alignItems: "center", padding: "23px", marginBottom: "5px"
+                    border: "1px solid gray", width: "300px", alignItems: "center", paddingTop: "10px", paddingLeft: "10px", paddingRight: "10px", margin: "5px"
                     }} className="postCard">
-                        <h3 style={{textTransform: "capitalize"}}>{post.name}</h3>
+                        <h3 style={{textTransform: "capitalize", marginTop: "20px"}}>{post.name}</h3>
+                       
                         <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
                         { post.contact? <p>Contact By: {post.contact}</p> : ''}
-                        { post.productimage? <img src={post.productimage}/> : '' }
+                        { post.productimage? <img className="imageSpot" src={post.productimage} /> : '' }
 
                        { token?  <button onClick={ async (event)=> { 
                             const newList = [...posts]
@@ -96,6 +98,7 @@ facebook
                         {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
 
                     </div>
+                    </>
                 )
             }
                 </div>

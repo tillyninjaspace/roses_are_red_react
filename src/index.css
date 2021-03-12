@@ -55,9 +55,20 @@ h2 {
 
 p, button {
     font-family: 'Nunito', sans-serif;
+    margin-bottom: 10px;
 }
 
 button:hover {
     color: red;
     background-color: white;
+}
+
+.imageSpot {
+    width: 300px;
+    height: auto;
+    -webkit-filter: brightness(120%);
+}
+
+.imageSpot:hover {
+    -webkit-filter: brightness(150%);
 }
