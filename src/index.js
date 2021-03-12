@@ -16,8 +16,8 @@ const App = () => {
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState('')
 //FOR DEVELOPMENT
-    // const URL = 'https://roses-are-red.herokuapp.com/api/posts'
-    const URL = 'http://localhost:4000/api/posts'
+    const URL = 'https://roses-are-red.herokuapp.com/api/posts'
+    // const URL = 'http://localhost:4000/api/posts'
 //FOR DEPLOYMENT, change URL to line 12 and comment out line 13 and also swap line 54 for line 55
 
     async function fetchPosts() {
