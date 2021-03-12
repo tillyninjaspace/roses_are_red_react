@@ -18,8 +18,6 @@ const Slide = () => {
             <Carousel.Caption>
               <h3>Read the Blog</h3>
               <p>Visit <a href="http://sanluisobispomom.com">SanLuisObispoMom.com</a> and find the <a href="http://sanluisobispomom.com/blog.php">blog section.</a>
-                {/* San Luis Obispo County encompasses popular cities town including: San Luis Obispo,
-                Pismo Beach, Paso Robles, Oceano Dunes, Morro Bay, San Simeon  */}
               </p>
             </Carousel.Caption>
           </Carousel.Item>
