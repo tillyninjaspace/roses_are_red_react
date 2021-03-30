@@ -7,6 +7,7 @@ import Contact from './components/Contact'
 import Slide from './components/Carousel'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { deletePost } from './api';
+import Button from 'react-bootstrap/Button';
 
 const App = () => {
 
@@ -51,7 +52,7 @@ const App = () => {
     return (
         <div style={{textAlign: "center"}}>
         <p style={{backgroundColor: "darkgray", paddingTop: "5px", paddingBottom: "5px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> <span style={{position: "fixed",
-            right: "10px", top: "0px"}}>
+            right: "5px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
             facebook
             </span></a></span></p>
@@ -75,7 +76,7 @@ const App = () => {
                         { post.contact? <p>Contact By: {post.contact}</p> : ''}
                         { post.productimage? <img className="imageSpot" src={post.productimage} /> : '' }
 
-                       { token?  <button onClick={ async (event)=> { 
+                        { token?  <Button variant="danger" type="submit" onClick={ async (event)=> { 
                             const newList = [...posts]
                             const index = newList.findIndex(postItem => postItem.id === post.id)
                             if (index === -1) return;
@@ -89,9 +90,8 @@ const App = () => {
                             }
                         }}
 
-                         style={{marginTop: "15px", marginBottom: "15px", backgroundColor: "red", color: "white"}}
-                         className="deleteButton"
-                         >Delete</button>  : ''}
+                         style={{marginTop: "10px", marginBottom: "10px"}}
+                          >Delete</Button>  : ''}
 
                     </div>
                     </>
@@ -101,7 +101,6 @@ const App = () => {
             <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
             { isLoading? <Loading /> :  ''}
             
-         {/* <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>} */}
             <Footer />
 
             </div>

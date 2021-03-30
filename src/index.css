@@ -1,6 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300&family=RocknRoll+One&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Train+One&display=swap');
-
 
 img {
     max-width: 300px;
@@ -83,7 +81,6 @@ button:hover {
     -webkit-filter: brightness(150%);
 }
 
-.deleteButton:hover {
-    background-color: white;
-    color: red;
+.blurFont {
+    text-shadow: 0 0 2px #020101;
 }
