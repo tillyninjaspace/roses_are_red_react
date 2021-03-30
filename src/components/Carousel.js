@@ -15,8 +15,8 @@ const Slide = () => {
               alt="First slide"
             />
             <Carousel.Caption>
-              <h3>Read the Blog</h3>
-              <p>Visit <a href="http://sanluisobispomom.com">SanLuisObispoMom.com</a> and find the <a href="http://sanluisobispomom.com/blog.php">blog section.</a>
+              <h3>Read blogs about San Luis Obispo</h3>
+              <p>Visit <a href="http://sanluisobispomom.com">SanLuisObispoMom.com</a> and read <a href="http://sanluisobispomom.com/blog.php">about San Luis Obispo.</a>
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -28,7 +28,7 @@ const Slide = () => {
             />
           <Carousel.Caption>
             <h3>Thanks for visiting.</h3>
-            <p>Find family-friendly events under the <a href="http://www.sanluisobispomom.com/family-friendly-events.php">Events section</a>.</p>
+            <p>Find <a href="http://www.sanluisobispomom.com/family-friendly-events.php">Events in San Luis Obispo</a>.</p>
           </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item>
@@ -39,7 +39,7 @@ const Slide = () => {
             />
             <Carousel.Caption>
               <h3>Restaurants in SLO County</h3>
-              <p>Read our <a href="http://sanluisobispo.com/restaurants.php">recommendations</a>.</p>
+              <p>Read <a href="http://sanluisobispo.com/restaurants.php">recommendations</a>.</p>
             </Carousel.Caption>
           </Carousel.Item>
           </Carousel>

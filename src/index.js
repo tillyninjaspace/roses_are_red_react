@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css'
-// import Postform from './components/Form'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
 import Contact from './components/Contact'
@@ -52,17 +51,14 @@ const App = () => {
     return (
         <div style={{textAlign: "center"}}>
         <p style={{backgroundColor: "darkgray", paddingTop: "5px", paddingBottom: "5px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> <span style={{position: "fixed",
-        right: "10px", top: "0px"}}>
+            right: "10px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
-facebook
-</span></a></span></p>
+            facebook
+            </span></a></span></p>
         
-        <h1>Bulletin Board</h1>
+        <h1 style={{padding: "60px"}}>San Luis Obispo Bulletin Board</h1>
         <h2>Free Things &amp; Featured Listings</h2>
-            {/* <Switch> */}
-               {/* <Route path='/login'> */}
-               {/* <Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} token={token} setToken={setToken}/>  */}
-                   {/* </Route> */}
+            
         { !isLoading ? <Slide/> : ''}
                <div className="itemList">
             {
@@ -93,21 +89,19 @@ facebook
                             }
                         }}
 
-                         style={{marginTop: "15px", backgroundColor: "red", color: "white"}}>Delete</button>  : ''}
-
-                        {/* { post.productimage? <img src={`https://roses-are-red.herokuapp.com/${post.productimage}`}/> : '' } */}
+                         style={{marginTop: "15px", marginBottom: "15px", backgroundColor: "red", color: "white"}}
+                         className="deleteButton"
+                         >Delete</button>  : ''}
 
                     </div>
                     </>
                 )
             }
                 </div>
-            {/* { token ? <Postform token={token} posts={posts} setPosts={setPosts}/> : '' } */}
-            {/* <Postform posts={posts} setPosts={setPosts}/>  */}
-            {/* { !isLoading ? <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  : ''} */}
             <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
-            {/* </Switch> */}
-            { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
+            { isLoading? <Loading /> :  ''}
+            
+         {/* <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>} */}
             <Footer />
 
             </div>
