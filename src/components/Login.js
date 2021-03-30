@@ -34,7 +34,7 @@ const Login = (props) => {
 
     return (    
       <Form style={{border: "2px double lightgray", borderRadius: "5px", padding: "10px", margin: "10px"}}
-      onSubmit={handleSubmission}>
+        onSubmit={handleSubmission}>
       <Form.Label>{errorMessage ? `${errorMessage}` : '' }</Form.Label>
        
       <Form.Group controlId="formBasicEmail">

@@ -56,7 +56,7 @@ const App = () => {
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
 facebook
 </span></a></span></p>
-        { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
+        
         <h1>Bulletin Board</h1>
         <h2>Free Things &amp; Featured Listings</h2>
             {/* <Switch> */}
@@ -104,9 +104,10 @@ facebook
                 </div>
             {/* { token ? <Postform token={token} posts={posts} setPosts={setPosts}/> : '' } */}
             {/* <Postform posts={posts} setPosts={setPosts}/>  */}
-            { !isLoading ? <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  : ''}
-            {/* <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  */}
+            {/* { !isLoading ? <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/>  : ''} */}
+            <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
             {/* </Switch> */}
+            { isLoading? <Loading /> :  <p><a href="http://sanluisobispomom.com" target="_blank" alt="sanluisobispomom.com"> <img style={{maxWidth: "200px"}} src="/sanluisobispomom_logo.png"/></a></p>}
             <Footer />
 
             </div>
