@@ -19,7 +19,6 @@ const Postform = ({posts, setPosts}) => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         setFileUpload(true);
-        console.log("HELLO HELLO, ABOUT TO POST")
         
         try {
         let formData = new FormData();
@@ -41,7 +40,6 @@ const Postform = ({posts, setPosts}) => {
             throw error
           })
 
-        console.log("POST IS MAGIC!")
 
         setName('')
         setDescription('')
@@ -51,8 +49,6 @@ const Postform = ({posts, setPosts}) => {
         setImagePreview('')
         fileImageUpload.current.value = '';
 
-        console.log("END OF POST FUNCTION")
-
         } catch(error) {
             console.error(error)
         }
@@ -60,13 +56,12 @@ const Postform = ({posts, setPosts}) => {
 
     const changeHandler = (event) => {
       setSelectedFile(event.target.files[0]);
-      console.log("What is the file", selectedFile)
       setImagePreview(URL.createObjectURL(event.target.files[0]))
       setPicture(URL.createObjectURL(event.target.files[0]))
     }
 
-    console.log("NAME", name, "DESCRIPTION", description, "Link", link,
-    "PICTURE", picture, "SELECTEDFILE", selectedFile, "FILE NAME: ", fileUpload)
+    // console.log("NAME", name, "DESCRIPTION", description, "Link", link,
+    // "PICTURE", picture, "SELECTEDFILE", selectedFile, "FILE NAME: ", fileUpload)
 
     return (
    

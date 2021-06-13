@@ -4,11 +4,21 @@ import Carousel from 'react-bootstrap/Carousel';
 const Slide = () => {
     return (
         <div>
+             <style type="text/css">
+              {`
+              .carousel-item {
+                background-color: darkgray;
+                color: white;
+              }
+              `}
+            </style>
+
           <Carousel fade style={{
-            backgroundColor: "black", padding: "5px", marginLeft: "5px", marginRight: "5px", borderRadius: "5px", display: "flex",
-            justifyContent: "space-between", marginTop: "20px"
+            backgroundColor: "black", display: "flex",
+            justifyContent: "space-between"
             }}>
-          <Carousel.Item>
+          <Carousel.Item interval={1000}
+          >
             <img 
               className="d-block w-100"
               src="https://res.cloudinary.com/ninjaspacecontent/image/upload/c_crop,h_1200,w_1000/v1615413582/bv8d4irles2jypa1gp9u.jpg"
@@ -20,7 +30,7 @@ const Slide = () => {
               </p>
             </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item interval={500}>
             <img 
               className="d-block w-100"
               src="https://res.cloudinary.com/ninjaspacecontent/image/upload/c_crop,h_1200,w_1000/v1614990890/jjubh4gkol9qasv4f0ko.jpg"
@@ -31,7 +41,7 @@ const Slide = () => {
             <p>Find <a href="http://www.sanluisobispomom.com/family-friendly-events.php">Events in San Luis Obispo</a>.</p>
           </Carousel.Caption>
           </Carousel.Item>
-          <Carousel.Item>
+          <Carousel.Item interval={500}>
             <img 
               className="d-block w-100"
               src="https://res.cloudinary.com/ninjaspacecontent/image/upload/c_crop,e_vibrance:20,h_1200,w_1000/v1615493206/gqgiuqz8e9m0jizpdpuq.jpg"

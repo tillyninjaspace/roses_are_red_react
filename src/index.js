@@ -9,13 +9,18 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { deletePost } from './api';
 import Button from 'react-bootstrap/Button';
 
+import Update from './components/Update';
+
 const App = () => {
 
     const [posts, setPosts] = useState([])
-    const [isLoggedIn, setIsLoggedIn] = useState(false)
+    // const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState('')
-    const [isDeleted, setIsDeleted] = useState(false);
+    const [isChanged, setIsChanged] = useState(false);
+    const [isUpdating, setIsUpdating] = useState(false);
+    const [idToUpdate, setIdToUpdate] = useState(0)
+
 //FOR DEVELOPMENT
     const URL = 'https://roses-are-red.herokuapp.com/api/posts'
     // const URL = 'http://localhost:4000/api/posts'
@@ -45,14 +50,12 @@ const App = () => {
         .catch(error => {
             console.error(error)
         })
-    },[isDeleted])
+    },[isChanged])
 
-    console.log("What are the posts", posts)
-    console.log("GLOBAL token", token)
     
     return (
         <div style={{textAlign: "center"}}>
-        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> 
+        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">Parent Site &#8594;</a> 
         <span style={{position: "absolute",
             right: "5px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
@@ -80,8 +83,22 @@ const App = () => {
                         {post.active? <p>Available: yes</p> : <p>Available: <span style={{color: 'red'}}>no</span></p>}
                         { post.location? <p>Pick Up Location: {post.location}</p> : '' }
                         { post.link? <p>Link: <a href={post.link}>link to resource</a></p> : ''}
-                        { post.productimage? <img className="imageSpot" src={post.productimage} /> : '' }
+{/* UpdateButton */}
+                        { token ? 
+                            <p>
+                                <Button variant="success"
+                                onClick={ (event)=> { setIsUpdating(true)
+                                setIdToUpdate(post.id)
+                                }}
+                                >Update</Button>
+                            </p>
+                            : ''
+                        }
+{/* End of Update Button */}
+                        { post.productimage? <a href={post.link} target="_blank"><img className="imageSpot" src={post.productimage} /></a>: '' }
                         
+                      
+
                         { token && post.active?  <Button variant="danger" type="submit" onClick={ async (event)=> { 
                         //  When it was real delete   
                             // const newList = [...posts]
@@ -90,12 +107,12 @@ const App = () => {
                             // newList.splice(index,1)
                             // setPosts(newList)
                         //end When it was real delete
-                                setIsDeleted(false)
+                                setIsChanged(false)
                             try {
                                 
                                 await deletePost(post.id)
                                 console.log("Delete Worked")
-                                setIsDeleted(true)
+                                setIsChanged(true)
                             } catch(error) {
                                 console.log(error)
                             }
@@ -104,11 +121,6 @@ const App = () => {
                          style={{marginTop: "10px", marginBottom: "10px"}}
                           >Mark Unavailable</Button>  : ''}
 
-{/* Update Button */}
-                        {/* { token? 
-
-                        } */}
-{/* End Update Button */}
                     </div>
                     </>
                 )
@@ -116,6 +128,8 @@ const App = () => {
                 </div>
             <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
             { isLoading? <Loading /> :  ''}
+
+            { isUpdating? <Update idToUpdate={idToUpdate} setIdToUpdate={setIdToUpdate} setIsChanged={setIsChanged} setIsUpdating={setIsUpdating}/> : ''}
             
             <Footer />
 

@@ -12,10 +12,9 @@ const Login = (props) => {
 
     const handleSubmission = async (event) => {
       event.preventDefault()
-      console.log(`What's username and password`, username, password)
+      // console.log(`What's username and password`, username, password)
       try {
         const user = await logIn(username, password)
-        console.log(user, "TOKEN", user.token, "USER MESSAGE", user.message)
         if (user.token) {
         setErrorMessage(user.message)
         setToken(user.token)
@@ -28,9 +27,6 @@ const Login = (props) => {
         console.error(error)
       }
     };
-
-    console.log("WHAT's the error MESSAGE", errorMessage)
-
 
     return (    
       <Form style={{border: "2px double lightgray", borderRadius: "5px", padding: "10px", margin: "10px"}}
