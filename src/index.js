@@ -15,6 +15,7 @@ const App = () => {
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     const [isLoading, setIsLoading] = useState(false)
     const [token, setToken] = useState('')
+    const [isDeleted, setIsDeleted] = useState(false);
 //FOR DEVELOPMENT
     const URL = 'https://roses-are-red.herokuapp.com/api/posts'
     // const URL = 'http://localhost:4000/api/posts'
@@ -44,22 +45,24 @@ const App = () => {
         .catch(error => {
             console.error(error)
         })
-    },[])
+    },[isDeleted])
 
     console.log("What are the posts", posts)
     console.log("GLOBAL token", token)
     
     return (
         <div style={{textAlign: "center"}}>
-        <p style={{backgroundColor: "darkgray", paddingTop: "5px", paddingBottom: "5px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> 
+        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">homepage &#8594;</a> 
         <span style={{position: "absolute",
             right: "5px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
             facebook
             </span></a></span></p>
         
-        <h1 style={{padding: "60px"}}>San Luis Obispo Bulletin Board</h1>
-        <h2>Free Things &amp; Featured Listings</h2>
+        <div className="topHeader" style={{padding: "70px", background: "linear-gradient(153deg, rgba(36,36,0,1) 0%, rgba(241,168,56,1) 0%, rgba(227,240,242,0.015625) 100%)"}}>
+            <h1>San Luis Obispo Events</h1>
+            <h4>Fun and Featured Events in SLO County</h4>
+        </div>
             
         { !isLoading ? <Slide/> : ''}
                <div className="itemList">
@@ -73,27 +76,39 @@ const App = () => {
                        
                         <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>
-                        { post.location? <p>Pick Up Location: {post.location}</p> : '' }
-                        { post.contact? <p>Contact By: {post.contact}</p> : ''}
-                        { post.productimage? <img className="imageSpot" src={post.productimage} /> : '' }
 
-                        { token?  <Button variant="danger" type="submit" onClick={ async (event)=> { 
-                            const newList = [...posts]
-                            const index = newList.findIndex(postItem => postItem.id === post.id)
-                            if (index === -1) return;
-                            newList.splice(index,1)
-                            setPosts(newList)
+                        {post.active? <p>Available: yes</p> : <p>Available: <span style={{color: 'red'}}>no</span></p>}
+                        { post.location? <p>Pick Up Location: {post.location}</p> : '' }
+                        { post.link? <p>Link: <a href={post.link}>link to resource</a></p> : ''}
+                        { post.productimage? <img className="imageSpot" src={post.productimage} /> : '' }
+                        
+                        { token && post.active?  <Button variant="danger" type="submit" onClick={ async (event)=> { 
+                        //  When it was real delete   
+                            // const newList = [...posts]
+                            // const index = newList.findIndex(postItem => postItem.id === post.id)
+                            // if (index === -1) return;
+                            // newList.splice(index,1)
+                            // setPosts(newList)
+                        //end When it was real delete
+                                setIsDeleted(false)
                             try {
+                                
                                 await deletePost(post.id)
                                 console.log("Delete Worked")
+                                setIsDeleted(true)
                             } catch(error) {
                                 console.log(error)
                             }
                         }}
 
                          style={{marginTop: "10px", marginBottom: "10px"}}
-                          >Delete</Button>  : ''}
+                          >Mark Unavailable</Button>  : ''}
 
+{/* Update Button */}
+                        {/* { token? 
+
+                        } */}
+{/* End Update Button */}
                     </div>
                     </>
                 )

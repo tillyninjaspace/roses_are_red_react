@@ -8,7 +8,7 @@ const Postform = ({posts, setPosts}) => {
     const [name, setName] = useState('')
     const [description, setDescription] = useState('')
     const [location, setLocation] = useState('')
-    const [contact, setContact] = useState('')
+    const [link, setLink] = useState('')
     const [picture, setPicture] = useState('')
 
     const [selectedFile, setSelectedFile] = useState();
@@ -26,7 +26,7 @@ const Postform = ({posts, setPosts}) => {
           formData.append('name', name)
           formData.append('description', description)
           formData.append('location', location)
-          formData.append('contact', contact)
+          formData.append('link', link)
           formData.append('picture', picture)
           formData.append('productimage', selectedFile)
 
@@ -46,7 +46,7 @@ const Postform = ({posts, setPosts}) => {
         setName('')
         setDescription('')
         setLocation('')
-        setContact('')
+        setLink('')
         setSelectedFile()
         setImagePreview('')
         fileImageUpload.current.value = '';
@@ -65,7 +65,7 @@ const Postform = ({posts, setPosts}) => {
       setPicture(URL.createObjectURL(event.target.files[0]))
     }
 
-    console.log("NAME", name, "DESCRIPTION", description, "Contact", contact,
+    console.log("NAME", name, "DESCRIPTION", description, "Link", link,
     "PICTURE", picture, "SELECTEDFILE", selectedFile, "FILE NAME: ", fileUpload)
 
     return (
@@ -92,10 +92,10 @@ const Postform = ({posts, setPosts}) => {
       </Form.Group>
 
       <Form.Group>
-        <Form.Label>Contact Info:</Form.Label>
+        <Form.Label>Link Info:</Form.Label>
       
-        <Form.Control type="text" placeholder="Your Contact Information" value={contact}
-        onChange={(event) => setContact(event.target.value)}
+        <Form.Control type="text" placeholder="Link" value={link}
+        onChange={(event) => setLink(event.target.value)}
         />
       </Form.Group>
 
