@@ -17,7 +17,7 @@ const Contact = (props) => {
         </Accordion.Toggle>
         </Card.Header>
         <Accordion.Collapse eventKey="0">
-        <Card.Body>Contact Us Form is coming to request a new event post.
+        <Card.Body><a href="http://www.sanluisobispomom.com/contact-us.php" target="_blank" title="Submit an event in San Luis Obispo">Use the Contact Us Form</a> to request a new event post.
         </Card.Body>
         </Accordion.Collapse>
         </Card>
