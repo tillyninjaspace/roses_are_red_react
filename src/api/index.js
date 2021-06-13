@@ -9,7 +9,6 @@ export async function logIn(username, password) {
             body: JSON.stringify({username, password})
         })
         const user = await response.json()
-        console.log("What's React API data for LOGIN", user)
         return user
     } catch (error) {
         throw error
@@ -26,3 +25,18 @@ export async function deletePost(id) {
         console.error(error)
     }
 }
+
+export async function updatingPost(id, name, description, location, link, active) {
+    try {
+        const response = await fetch(`${BASE_API}/user/post/${id}`, {
+            method: "PATCH",
+            headers: {"Content-Type": "application/json"},
+            body: JSON.stringify({name, description, location, link, active})
+        })
+        const post = await response.json();
+        console.log("Update Post Response JSON: ", post)
+        return post;
+    } catch (error) {
+        throw error
+    }
+};
