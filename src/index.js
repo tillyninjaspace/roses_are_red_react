@@ -80,8 +80,8 @@ const App = () => {
                         <p>ID: {post.id}</p>
                         <p>Item Description: {post.description}</p>
 
-                        {post.active? <p>Available: yes</p> : <p>Available: <span style={{color: 'red'}}>no</span></p>}
-                        { post.location? <p>Pick Up Location: {post.location}</p> : '' }
+                        {post.active? <p>Active/Available: yes</p> : <p>Active/Available: <span style={{color: 'red'}}>no</span></p>}
+                        { post.location? <p>Location: {post.location}</p> : '' }
                         { post.link? <p>Link: <a href={post.link}>link to resource</a></p> : ''}
 {/* UpdateButton */}
                         { token ? 

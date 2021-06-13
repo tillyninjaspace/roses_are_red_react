@@ -26,7 +26,7 @@ const Slide = () => {
             />
             <Carousel.Caption className="blurFont">
               <h3>Read blogs about San Luis Obispo</h3>
-              <p>Read <a href="http://sanluisobispomom.com/blog.php">about San Luis Obispo.</a>
+              <p>Read <a href="http://sanluisobispomom.com/blog.php" target="_blank">about San Luis Obispo.</a>
               </p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -38,7 +38,7 @@ const Slide = () => {
             />
           <Carousel.Caption className="blurFont">
             <h3>Events All Over San Luis Obispo County</h3>
-            <p>Find <a href="http://www.sanluisobispomom.com/family-friendly-events.php">Events in San Luis Obispo</a>.</p>
+            <p>Find <a href="http://www.sanluisobispomom.com/family-friendly-events.php" target="_blank">events in San Luis Obispo</a>.</p>
           </Carousel.Caption>
           </Carousel.Item>
           <Carousel.Item interval={500}>
@@ -49,7 +49,7 @@ const Slide = () => {
             />
             <Carousel.Caption className="blurFont">
               <h3>Restaurants in SLO County</h3>
-              <p>See <a href="http://sanluisobispomom.com/restaurants.php">restaurant pictures</a>.</p>
+              <p>See <a href="http://www.sanluisobispomom.com/family-friendly-restaurants.php" target="_blank">restaurant pictures</a>.</p>
             </Carousel.Caption>
           </Carousel.Item>
           </Carousel>
