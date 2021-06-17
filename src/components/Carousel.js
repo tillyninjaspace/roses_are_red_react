@@ -14,7 +14,8 @@ const Slide = () => {
             </style>
 
           <Carousel fade style={{
-            backgroundColor: "black", display: "flex",
+            backgroundColor: "black", 
+            display: "flex",
             justifyContent: "space-between"
             }}>
           <Carousel.Item interval={1000}
@@ -25,7 +26,7 @@ const Slide = () => {
               alt="First slide"
             />
             <Carousel.Caption className="blurFont">
-              <h3>Read blogs about San Luis Obispo</h3>
+              <h3>About San Luis Obispo</h3>
               <p>Read <a href="http://sanluisobispomom.com/blog.php" target="_blank">about San Luis Obispo.</a>
               </p>
             </Carousel.Caption>

@@ -6,7 +6,7 @@ const Loading = () => {
         <div className="loading">
               <div className="loadingImage">
                 <p>FEATURED BOARD IS LOADING...</p>
-                <span>It may take up to 30 seconds to load. Thanks for your patience.</span>
+                <p>It may take up to 30 seconds to load. Thanks for your patience.</p>
                 <Spinner animation="border" variant="primary">
                 <span className="sr-only">Loading...</span>
                 </Spinner>
