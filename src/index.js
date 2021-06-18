@@ -30,9 +30,9 @@ const App = () => {
        
         try {
             setIsLoading(true)
-            console.log("starting to fetch")
+            // console.log("starting to fetch")
             const data = await fetch(URL)
-            console.log(data)
+            // console.log(data)
             const response = data.json();
             return response
         } catch (error) {

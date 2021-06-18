@@ -38,7 +38,7 @@ const Slide = () => {
               alt="Second slide"
             />
           <Carousel.Caption className="blurFont">
-            <h3>Events All Over San Luis Obispo County</h3>
+            <h3>Events in San Luis Obispo County</h3>
             <p>Find <a href="http://www.sanluisobispomom.com/family-friendly-events.php" target="_blank">events in San Luis Obispo</a>.</p>
           </Carousel.Caption>
           </Carousel.Item>

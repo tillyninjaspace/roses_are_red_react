@@ -110,5 +110,3 @@ const Postform = ({posts, setPosts}) => {
 }
 
 export default Postform;
-
-//Goals: use react-bootstrap and also have an upload button for pictures
