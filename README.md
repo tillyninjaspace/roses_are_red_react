@@ -11,7 +11,7 @@ Deployed Front End React App via Netlify: https://dazzling-clarke-6e7127.netlify
 
 ## Completion Date: April 2021
 
-Tech Stack: React, Bootstrap, Multer, Cloudinary, Jsonwebtoken, Node, Express, PostgreSQL HTML, CSS, Photoshop
+Tech Stack: React, Bootstrap, Multer, Cloudinary, Jsonwebtoken, Node, Express, PostgreSQL HTML, CSS
 
 ## Developer: Tilly Wright
 To see my other completed work, see my Portfolio: https://gracious-mcnulty-e733ac.netlify.app/portfolio.html
