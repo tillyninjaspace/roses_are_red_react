@@ -1,5 +1,5 @@
 # roses_are_red_react
-This Full stack project's focus was to provide a way to create an easy-to-use Events Board as an added service to any destination or mission centric website.
+This full stack project's focus is to provide a way to create an easy-to-use Events Board as an added service to any destination or mission centric website.
 
 Developer: Tilly Wright
 
