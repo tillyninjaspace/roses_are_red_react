@@ -32,7 +32,7 @@ const handleSubmit = async (event) => {
 
     return (
 
-        <Form onSubmit={handleSubmit} style={{position: "fixed", top: "200px", left:"30%", zIndex: "1"}}>
+        <Form onSubmit={handleSubmit} style={{position: "fixed", top: "100px", left:"30%", zIndex: "1"}}>
         <Form.Group style={{border: "2px solid gray", backgroundColor: "lightgray"}}>
             <h3 style={{backgroundColor: "#28A744", color: "white"}}>Update Post </h3>
 
@@ -43,10 +43,19 @@ const handleSubmit = async (event) => {
             <Form.Control type="text" placeholder="Name" value={name}
                 onChange={ (event) => setName(event.target.value)}
             />
-            <Form.Label>Description</Form.Label>
-            <Form.Control type="text" placeholder="Description" value={description} 
+            {/* <Form.Label>Description</Form.Label> */}
+            {/* <Form.Control type="textarea" rows="3" placeholder="Description" value={description} 
                 onChange={ (event) => setDescription(event.target.value)}
-            />
+            /> */}
+
+            <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">New Description</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+            placeholder="Description" value={description} 
+            onChange={ (event) => setDescription(event.target.value)}
+            ></textarea>
+            </div>
+
             <Form.Label>Location</Form.Label>
             <Form.Control type="text" placeholder="Location" value={location} 
                 onChange={ (event) => setLocation(event.target.value)}
