@@ -52,10 +52,13 @@ const App = () => {
         })
     },[isChanged])
 
+    const filteredActivePosts = posts.filter(activePost => activePost.active === true)
+
+    const filteredInActivePosts = posts.filter(inactivePost => inactivePost.active === false)
     
     return (
         <div style={{textAlign: "center"}}>
-        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}>Go to the <a href="http://sanluisobispomom.com/" alt="San Luis Obispo Mom homepage">Parent Site &#8594;</a> 
+        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}><a href="http://sanluisobispomom.com/" target="_blank" alt="San Luis Obispo Mom homepage">More SLO County Events &#8594;</a> 
         <span style={{position: "absolute",
             right: "5px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
@@ -64,13 +67,13 @@ const App = () => {
         
         <div className="topHeader" style={{padding: "70px", background: "linear-gradient(153deg, rgba(36,36,0,1) 0%, rgba(241,168,56,1) 0%, rgba(227,240,242,0.015625) 100%)"}}>
             <h1>San Luis Obispo Events</h1>
-            <h4>Fun and Featured Events in SLO County</h4>
+            <h5>Fun and Featured Events in San Luis Obispo (SLO) County</h5>
         </div>
             
         { !isLoading ? <Slide/> : ''}
                <div className="itemList">
             {
-                 posts && posts.map((post) => 
+                 filteredActivePosts && filteredActivePosts.map((post) => 
                     <>
                     <div key={post.id} style={{display: "flex", flexDirection: "column", justifyContent: "space-between",
                     border: "1px solid gray", width: "300px", alignItems: "center", paddingTop: "10px", paddingLeft: "10px", paddingRight: "10px", margin: "5px"
@@ -82,7 +85,7 @@ const App = () => {
 
                         {post.active? <p>Active/Available: yes</p> : <p>Active/Available: <span style={{color: 'red'}}>no</span></p>}
                         { post.location? <p>Location: {post.location}</p> : '' }
-                        { post.link? <p>Link: <a href={post.link}>link to resource</a></p> : ''}
+                        { post.link? <p>Link: <a href={post.link} target="_blank">link to resource</a></p> : ''}
 {/* UpdateButton */}
                         { token ? 
                             <p>
@@ -118,6 +121,57 @@ const App = () => {
                             }
                         }}
 
+                        style={{marginTop: "10px", marginBottom: "10px"}}
+                        >Mark Unavailable</Button>  : ''}
+
+                    </div>
+                    </>
+                )
+            }
+                </div>
+
+{/* inactive */}
+        <h4>Past Events:</h4>
+        <div className="inActive">
+   
+            {
+                 filteredInActivePosts && filteredInActivePosts.map((post) => 
+                 
+                    <>
+                    <div key={post.id} style={{display: "flex", flexDirection: "column", justifyContent: "space-between",
+                    border: "1px solid gray", width: "300px", alignItems: "center", paddingTop: "10px", paddingLeft: "10px", paddingRight: "10px", margin: "5px"
+                    }} className="inActiveCard">
+                        <h3 style={{textTransform: "capitalize", marginTop: "20px"}}>{post.name}</h3>
+                       
+                        <p>ID: {post.id}</p>
+                        <p>Item Description: {post.description}</p>
+
+                        {post.active? <p>Active/Available: yes</p> : <p>Active/Available: <span style={{color: 'red'}}>no</span></p>}
+                        { post.location? <p>Location: {post.location}</p> : '' }
+                        { post.link? <p>Link: <a href={post.link} target="_blank">link to resource</a></p> : ''}
+
+                        { token ? 
+                            <p>
+                                <Button variant="success"
+                                onClick={ (event)=> { setIsUpdating(true)
+                                setIdToUpdate(post.id)
+                                }}
+                                >Update</Button>
+                            </p>
+                            : ''
+                        }      
+
+                        { token && post.active?  <Button variant="danger" type="submit" onClick={ async (event)=> { 
+                                setIsChanged(false)
+                            try {   
+                                await deletePost(post.id)
+                                console.log("Inactive Now")
+                                setIsChanged(true)
+                            } catch(error) {
+                                console.log(error)
+                            }
+                        }}
+
                          style={{marginTop: "10px", marginBottom: "10px"}}
                           >Mark Unavailable</Button>  : ''}
 
@@ -125,15 +179,20 @@ const App = () => {
                     </>
                 )
             }
-                </div>
-            <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
-            { isLoading? <Loading /> :  ''}
+        </div>
 
-            { isUpdating? <Update idToUpdate={idToUpdate} setIdToUpdate={setIdToUpdate} setIsChanged={setIsChanged} setIsUpdating={setIsUpdating}/> : ''}
-            
-            <Footer />
+{/*end of inactive*/}
 
-            </div>
+
+
+        <Contact token={token} setToken={setToken} posts={posts} setPosts={setPosts}/> 
+        { isLoading? <Loading /> :  ''}
+
+        { isUpdating? <Update idToUpdate={idToUpdate} setIdToUpdate={setIdToUpdate} setIsChanged={setIsChanged} setIsUpdating={setIsUpdating}/> : ''}
+        
+        <Footer />
+
+        </div>
     )
 };
 

@@ -60,6 +60,17 @@ h2 {
     color: white;
 }
 
+.inActive {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+.inActiveCard {
+    background-color: lightgray;
+}
+
 p, button {
     font-family: 'Nunito', sans-serif;
     margin-bottom: 10px;

@@ -24,7 +24,7 @@ const handleSubmit = async (event) => {
         setLocation('')
         setLink('')
         setIdToUpdate(0)
-
+        setIsUpdating(false)
     } catch (error) {
         console.error(error)
     }
