@@ -58,7 +58,8 @@ const App = () => {
     
     return (
         <div style={{textAlign: "center"}}>
-        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}><a href="http://sanluisobispomom.com/" target="_blank" alt="San Luis Obispo Mom homepage">More SLO County Events &#8594;</a> 
+        <p style={{backgroundColor: "darkgray",paddingTop: "5px", paddingBottom: "5px", margin: "0px"}}><a href="http://www.sanluisobispomom.com/blog/category/Vegan" target="_blank" alt="Vegan Food in San Luis Obispo">
+            Find Vegan and Gluten-free Recipes &#8594;</a> 
         <span style={{position: "absolute",
             right: "5px", top: "0px"}}>
             <a href="https://www.facebook.com/sanluisobispomom" target="_blank" alt="San Luis Obispo Mom facebook"><span style={{paddingTop: "5px"}} className="material-icons">
@@ -128,7 +129,7 @@ const App = () => {
                     </>
                 )
             }
-                </div>
+        </div>
 
 {/* inactive */}
         <h4>Past Events:</h4>
